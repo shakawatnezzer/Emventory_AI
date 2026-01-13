@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+.idea/
+.vscode/
+
+# ML / Model artifacts
+models/
+*.h5
+*.pt
+*.pkl
+
+# OS files
+.DS_Store
+Thumbs.db
