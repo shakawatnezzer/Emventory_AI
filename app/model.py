@@ -14,11 +14,9 @@ INTENT_LABELS = [
 
 tokenizer = BertTokenizer.from_pretrained("bert-base-multilingual-cased")
 
-infer = None  # will be initialized on startup
+infer = None  
 
-# -----------------------------
-# Lazy-load ML model
-# -----------------------------
+
 def load_model():
     global infer
     if infer is None:
@@ -26,9 +24,7 @@ def load_model():
         infer = model.signatures["serving_default"]
         print("✅ ML model loaded")
 
-# -----------------------------
-# Tokenize input text
-# -----------------------------
+
 def tokenize(text: str):
     enc = tokenizer(
         text,
@@ -42,9 +38,7 @@ def tokenize(text: str):
         "attention_mask": enc["attention_mask"]
     }
 
-# -----------------------------
-# Predict intent
-# -----------------------------
+
 def predict_intent(text: str):
     if infer is None:
         raise RuntimeError("Model not loaded. Call load_model() first.")
